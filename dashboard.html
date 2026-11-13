@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Tipografi (Akan otomatis pakai font standar komputer jika offline) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+
+    <!-- GSAP Core (Opsional) -->
+    <script src="gsap.min.js"></script>
+
+    <style>
+        :root {
+            --cream: #F7EED6;
+            --cream-light: #FFFDF7;
+            --blue: #257BE3;
+            --orange: #EA5A2B;
+            --orange-dark: #cf491d;
+            --dark: #252B35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            background-color: var(--cream);
+            background-image: radial-gradient(rgba(37, 43, 53, 0.16) 1.25px, transparent 1.25px);
+            background-size: 22px 22px;
+            color: var(--dark);
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Bingkai tepi viewport halus */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 12px;
+            border: 1.5px solid rgba(37, 43, 53, 0.18);
+            border-radius: 16px;
+            pointer-events: none;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--cream-light);
+            border: 2.5px solid var(--dark);
+            border-radius: 20px;
+            box-shadow: 8px 8px 0px var(--dark);
+            padding: 44px 32px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        h1 {
+            font-family: 'Syne', Arial, sans-serif;
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 28px;
+            letter-spacing: -0.02em;
+        }
+
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 28px;
+            background: var(--orange);
+            color: #FFFFFF;
+            border: 2px solid var(--dark);
+            border-radius: 11px;
+            font-size: 14.5px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 4px 4px 0px var(--dark);
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--orange-dark);
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0px var(--dark);
+        }
+
+        .logout-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px var(--dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="card" id="welcomeCard">
+        <h1>Selamat Datang</h1>
+        <a href="index.html" class="logout-btn">
+            <span>Logout</span>
+        </a>
+    </main>
+
+    <script>
+        if (typeof gsap !== 'undefined') {
+            gsap.from("#welcomeCard", {
+                y: 20,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power3.out"
+            });
+        }
+    </script>
+
+</body>
+</html>
